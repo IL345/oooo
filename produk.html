@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>FishPromotion</title>
+    <style>
+
+  
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+   
+
+     body {
+            font-family: Arial, sans-serif;
+             background-color:black;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+ 
+
+       .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color:  #005f73;
+            color: white;
+            position:none;
+             width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+  
+
+      .logo {
+            font-size: 19px;
+            font-weight: bold;
+  
+
+
+      }
+
+        .menu-toggle {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+
+
+
+
+        .navbar {
+            display: none;
+            background-color: #005f73;
+            padding: 20px;
+            color: white;
+        }
+
+        .navbar ul {
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin: 10px 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+         
+        .navbar ul li a:hover {
+         background: #e74c3c;
+       }
+
+  
+
+
+      .search-bar {
+            margin-top: 10px;
+        }
+
+        .search-bar input {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 50%;
+        }
+
+   
+
+
+
+
+     .theme-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .theme-toggle span {
+            margin-left: 10px;
+        }
+
+        .theme-toggle input {
+            appearance: none;
+            width: 50px;
+            height: 27px;
+            background: #fff;
+            border-radius: 25px;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .theme-toggle input::before {
+            content: '';
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            border:1px solid black;
+            background:linear-gradient(to right,white 40%,black 40%);
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle input:checked {
+            background: black;
+        }
+
+        .theme-toggle input:checked::before {
+            left: 26px;
+        }
+
+ 
+
+
+
+       main {
+            padding: 80px 20px 20px;
+            text-align: center;
+        }
+
+        section {
+            margin-bottom: 40px;
+            display: none; /* Sembunyikan semua bagian secara default */
+        }
+
+        .active {
+            display: block; /* Tampilkan hanya bagian aktif */
+        }
+
+
+
+          
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border:2px solid gold;
+            padding: 50px;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color:#fff;
+        }
+          
+         .card p {
+         color:#fff;
+          }
+          .card h4 {
+         color:#fff;
+          }
+            .card h2 {
+         color:#fff;
+          }
+            .card h1 {
+         color:#fff;
+          }
+             .card img {
+            width:100%;
+          }
+      
+
+       
+
+        footer {
+            background-color:  #005f73;
+            color: black;
+           font-size:15px;
+           font-weight:500;
+           letter-spacing:1px;
+           line-height:1.1;
+           text-transform:capitalize;
+           font-face:Verdana;
+            padding: 10px;
+            text-align: center;
+            position: none;
+            width: 100%;
+            bottom: 0;
+        }
+
+
+
+        .dark-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode .header-container {
+            background-color: #0077b6;
+        }
+
+        .dark-mode footer {
+            background-color: #ddd;
+        }
+
+        .dark-mode .navbar {
+          background-color:#0077b6;
+         }
+ 
+          .dark-mode .card {
+          background:white;
+          color:black;
+         }
+         .dark-mode .card h2{
+          background:white;
+          color:black;
+         }
+        .dark-mode .card h3{
+          background:white;
+          color:black;
+         }
+       .dark-mode .card p{
+          background:white;
+          color:black;
+         }
+         .dark-mode .card h4{
+          background:white;
+          color:black;
+         }
+          .dark-mode .card h1{
+          background:white;
+          color:black;
+         }
+
+
+
+
+         .form-control {
+            margin-bottom: 15px;
+        }
+        .form-control label {
+            display: block;
+            text-align:left;
+            color:black;
+            line-height:1.5;
+        }
+        .form-control input, .form-control textarea {
+            width: 100%;
+            padding: 9px;
+            border:1px solid #333;
+            color:black;
+        }
+        
+       
+     .form-control button{
+    color: #fff;
+    text-decoration: none;
+    background-color:dodgerblue;
+    float:left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 8px 20px;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+ } 
+.form-control button:hover{
+background:#E3651D;
+}
+
+        footer3 {
+      position:fixed;
+      bottom:10px;
+      right:10px;
+     }
+
+      #scrolltoptop {
+      
+       border:none;
+       border-radius:100%;
+       padding:0.1px;
+    }
+      
+     .carousel-container {
+      width: 90%;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-slide {
+      min-width: 300px;
+      margin: 10px;
+      flex-shrink: 0;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .carousel-description {
+      background-color: #0066cc;
+      border-radius: 4px;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    /* Arrow button styles */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .arrow.left {
+      left: 0;
+    }
+
+    .arrow.right {
+      right: 0;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Optional: To make it look nice on mobile */
+    @media screen and (max-width: 600px) {
+      .carousel-slide {
+        min-width: 200px;
+      }
+    }
+
+
+
+
+
+     .carousel1-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; /* For smooth scrolling on mobile devices */
+      scroll-behavior: smooth;
+      gap: 10px; /* Add spacing between slides */
+      padding: 20px;
+    }
+
+    .carousel1-slide {
+      flex: 0 0 auto; /* Prevent shrinking or expanding */
+      scroll-snap-align: center; /* Snap to center */
+      width: 300px;
+      height: 200px;
+      background-color: #ccc;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .carousel1-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .carousel1-description {
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      font-size: 16px;
+    }
+
+    /* Hide scrollbar (optional) */
+    .carousel1-container::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel1-container {
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo"><img src="logo.png"style="width:150px;height:50px;"></div>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        </div>
+    </header>
+
+    <nav id="navbar" class="navbar">
+        <ul>
+            <li><a href="index.html"><font size="4"align="right"style="color:white;"><i class="fas fa-home"></i></font>            Home</a></li>
+            <li><a href="produk.html"><font size="4"align="right"style="color:white;"><i class="fas fa-shopping-cart"></i></font>  Produk</a></li>
+            <li><a href="blog.html"><font size="4"align="right"style="color:white;"><i class="fas fa-blog"></i></font>  Blog</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Cari produk...">
+        </div>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span></span>
+        </div>
+    </nav>
+ <h2><img src="j.jpg"align=centerstyle="width:300px;height:250px;"></h2><br><br>
+    <main>
+
+        <section id="produk"class="active">
+            <h2><img src="j.jpg"style="width:300px;height:250px;"></h2><br><br>
+
+             <div class="card-container">
+         <div class="carousel1-container">
+    <div class="carousel1-slide">
+      <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+      <div class="carousel1-description">Ermi Salwati - Kaur Perencanaan</div>
+    </div>
+   <div class="carousel1-slide">
+      <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+      <div class="carousel1-description">Ermi Salwati - Kaur Perencanaan</div>
+    </div>
+  <div class="carousel1-slide">
+      <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+      <div class="carousel1-description">Ermi Salwati - Kaur Perencanaan</div>
+    </div>
+    <div class="carousel1-slide">
+      <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+      <div class="carousel1-description">Ermi Salwati - Kaur Perencanaan</div>
+    </div>
+  </div>
+</div><br>
+
+
+            <div class="card-container">
+                <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                  <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                 <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+            </div><br>
+
+          <div class="card-container">
+           <div class="carousel-container">
+    <button class="arrow left" id="prevBtn">&#9664;</button> <!-- Left arrow -->
+    <div class="carousel-track" id="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+        <div class="carousel-description">Ermi Salwati - Kaur Perencanaan</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+2" alt="Image 2">
+        <div class="carousel-description">John Doe - Example Title</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+3" alt="Image 3">
+        <div class="carousel-description">Jane Doe - Example Title</div>
+      </div>
+      <!-- Duplicate slides to create the infinite effect -->
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+        <div class="carousel-description">Ermi Salwati - Kaur Perencanaan</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+2" alt="Image 2">
+        <div class="carousel-description">John Doe - Example Title</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://via.placeholder.com/300x200?text=Image+3" alt="Image 3">
+        <div class="carousel-description">Jane Doe - Example Title</div>
+      </div>
+    </div>
+    <button class="arrow right" id="nextBtn">&#9654;</button> <!-- Right arrow -->
+  </div><br>
+
+     <div class="card-container">
+                <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                  <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                 <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+                <div class="card">
+                    <h3><img src="j.jpg"style="width:200px;height:200px;border-radius:8px;"></h3>
+                    <h2>Ikan</h2>
+                    <h3>&#11088&#11088&#11088&#11088&#11088</h3>
+                   <h3>RP 50.000 Kilo</h3>
+                </div>
+            </div><br>
+
+        </section>
+
+
+    </main>  
+    
+    <footer>
+  <p><div class="login-container">
+                <h4>Message</h4>
+                <form>
+                <div class="form-control">
+                          <label for="name">Nama:</label>
+                 <input type="text"id="name"name="name"placeholder="Nama"required>
+                  <div class="form-control">
+                           <label for="email">Email:</label>
+                 <input type="text"id="email"name="email"placeholder="Email"required>
+                  <div class="form-control">
+                            <label for="message">Pesan:</label>
+                 <textarea id="message"name="message"placeholder="message"required></textarea>
+                 </div>
+                 <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                </form> 
+                </div><br><br></p>
+
+      
+
+        <p><img src="logo.png"align="center"style="width:165px;height:55px;"></p><br>
+       <p><i class="fas fa-envelope"style="font-size:20px;"></i> ihap968@gmail.com</p>
+        <p><i class="fab fa-whatsapp"style="font-size:20px;"></i> 0878-7047-7738</p><br><br>
+       <h3>Ikuti Kami</h3>
+      <p><a href="https://www.facebook.com/profile.php?id=61558576457158"><font size="6"align="right"style="color:#1877F2;"><i class="fab fa-facebook"></i></font></a>
+<a href="https://www.bing.com/ck/a?!&&p=752da3ba657615c4JmltdHM9MTcyNzkxMzYwMCZpZ3VpZD0xNWNjMWRmMS1kNzRjLTZiNTUtMWVmYS0wOGZjZDYxYTZhZDgmaW5zaWQ9NTE5NQ&ptn=3&ver=2&hsh=3&fclid=15cc1df1-d74c-6b55-1efa-08fcd61a6ad8&psq=twt&u=a1aHR0cHM6Ly90d2l0dGVyLmNvbS8_dHdfcD10d3QjOn46dGV4dD1Ud2l0dGVyIGlzIGEgc29jaWFsIHBsYXRmb3JtIHdoZXJlIHlvdSBjYW4gZm9sbG93IHRvcGljcyw&ntb=1"><font size="6"align="right"style="color:dodgerblue;"><i class="fab fa-twitter"></i></font></a>
+<a href="https://www.instagram.com/dzin0982?igsh=YzljYTk1ODg3Zg=="><font size="6"align="right"style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;color:transparent;"><i class="fab fa-instagram"></i></font></a>
+<a href="https://www.youtube.com/@IL_cook"><font size="6"align="right"style="color:red;"><i class="fab fa-youtube"></i></font></a></p>
+<br>
+        <p>&copy; 2024 FishPromotion. Semua Hak Cipta Dilindungi.</p>
+    </footer>
+   <footer3>
+      <a href="#"><button id="scrolltoptop"><i class="fas fa-arrow-alt-circle-up"style="font-size:30px;color:black;"></i></a></button>
+   </footer3>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        menuToggle.addEventListener('click', function() {
+            navbar.style.display = navbar.style.display === 'block' ? 'none' : 'block';
+            menuToggle.classList.toggle('active');
+            menuToggle.textContent = menuToggle.classList.contains('active') ? '✖' : '☰';
+        });
+
+       
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+
+                // Sembunyikan semua section
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Tampilkan section yang sesuai
+                document.getElementById(sectionId).classList.add('active');
+                navbar.style.display = 'none'; // Sembunyikan navbar setelah klik
+                menuToggle.classList.remove('active');
+                menuToggle.textContent = '☰'; // Kembalikan ikon menu ke bentuk garis tiga
+            });
+        });
+
+        document.getElementById('theme-toggle').addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+
+
+
+         const carouselTrack = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideWidth = document.querySelector('.carousel-slide').offsetWidth;
+    let currentSlide = 0;
+
+    // Infinite scroll logic
+    function moveToSlide(slideIndex) {
+      carouselTrack.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+
+      // Handle infinite loop
+      if (slideIndex >= 3) { // If it's the last duplicated slide, go back to the original first
+        setTimeout(() => {
+          carouselTrack.style.transition = 'none'; // Disable transition for instant move
+          carouselTrack.style.transform = `translateX(0px)`;
+          currentSlide = 0;
+        }, 300); // Match the CSS transition timing
+      } else if (slideIndex < 0) { // If it's before the first slide, go to the original last
+        setTimeout(() => {
+          carouselTrack.style.transition = 'none';
+          carouselTrack.style.transform = `translateX(-${2 * slideWidth}px)`;
+          currentSlide = 2;
+        }, 300);
+      }
+    }
+
+    // Button click events
+    nextBtn.addEventListener('click', () => {
+      currentSlide++;
+      carouselTrack.style.transition = 'transform 0.3s ease';
+      moveToSlide(currentSlide);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentSlide--;
+      carouselTrack.style.transition = 'transform 0.3s ease';
+      moveToSlide(currentSlide);
+    });
+
+    // Optional: Resize event to recalculate slide width if window resizes
+    window.addEventListener('resize', () => {
+      const newSlideWidth = document.querySelector('.carousel-slide').offsetWidth;
+      const shift = newSlideWidth / slideWidth; // Calculate proportion change
+      carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
+    });
+
+
+
+    </script>
+</body>
+</html>
